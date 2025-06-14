@@ -1,9 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Error404 from '../views/Error404.vue'  // 导入404组件
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -28,12 +27,6 @@ const router = createRouter({
         title: '日志记录',
       },
       component: () => import('../views/LogView.vue'),
-    },
-    // 添加404路由（必须放在最后）
-    {
-      path: '/:pathMatch(.*)*',  // 匹配所有路径
-      name: 'NotFound',
-      component: Error404,
     },
   ],
 })
